@@ -13,6 +13,7 @@ public class Data : MonoBehaviour
     public double towerRange;
     public double shootTimer;
     public double shootTime;
+    public double money;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class Data : MonoBehaviour
         spawnDistance = 20;
         towerRange = 10;
         shootTimer = 0;
-        shootTime = 0.2;
+        shootTime = 0.05;
+        money = 0;
     }
 }

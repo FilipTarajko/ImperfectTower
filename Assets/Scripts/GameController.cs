@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private Data data;
     public TMP_Text healthDisplay;
     public TMP_Text waveDisplay;
+    public TMP_Text moneyDisplay;
     public BasicEnemy basicEnemy;
     public GameObject Tower;
 
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour
                 data.waveTimer += Time.deltaTime;
             }
             healthDisplay.text = $"{System.Math.Round(data.health, 1)}/{System.Math.Round(data.maxHealth, 1)}";
+            moneyDisplay.text = $"Money: {System.Math.Round(data.money, 1)}";
         }
     }
 

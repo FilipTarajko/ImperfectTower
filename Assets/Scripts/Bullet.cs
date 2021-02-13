@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
             else
             {
                 target.GetComponent<BasicEnemy>().hp -= dmg;
-                Destroy(target); //temp
+                //Destroy(target); //temp
                 Destroy(this.gameObject);
             }
         }

@@ -8,19 +8,28 @@ public class BasicEnemy : MonoBehaviour
     private float speed = 5;
     private double dps = 1;
     public double hp = 3;
+    private double moneyGiven = 1;
 
     private GameController gameController;
+    private Data data;
 
     void Start()
     {
+        data = Object.FindObjectOfType<Data>();
         gameController = Object.FindObjectOfType<GameController>();
+    }
+
+    void GrantRewards()
+    {
+        data.money += moneyGiven;
     }
 
     private void Update()
     {
         if (hp <= 0)
         {
-            Destroy(this);
+            GrantRewards();
+            Destroy(this.gameObject);
         }
         float step = speed * Time.deltaTime;
         if (Vector3.Distance(transform.position, Tower.transform.position) > 1){
