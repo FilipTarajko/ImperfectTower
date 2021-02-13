@@ -42,12 +42,12 @@ public class GameController : MonoBehaviour
 
     private void NextWave()
     {
+        data.wave += 1;
         data.waveTimer -= data.waveTimer;
         for (int i = 0; i < data.wave + 3; i++)
         {
             SpawnNormalEnemy();
         }
-        data.wave += 1;
         DisplayWave();
     }
 
@@ -64,7 +64,7 @@ public class GameController : MonoBehaviour
 
     public void DisplayWave()
     {
-        waveDisplay.text = $"wave: {data.wave}";
+        waveDisplay.text = $"Wave: {data.wave}";
     }
 
     public void DealDamage(double damage)

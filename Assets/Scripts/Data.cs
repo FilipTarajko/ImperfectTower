@@ -18,7 +18,7 @@ public class Data : MonoBehaviour
     void Awake()
     {
         maxHealth = 10;
-        wave = 1;
+        wave = 0;
         waveTimer = 0;
         waveTime = 3;
         health = maxHealth;
