@@ -56,6 +56,10 @@ public class GameController : MonoBehaviour
         Vector2 spawnDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnLocation = new Vector3(spawnDirection.x*data.spawnDistance, 0, spawnDirection.y*data.spawnDistance);
         BasicEnemy spawning = Instantiate(basicEnemy, spawnLocation, Quaternion.LookRotation(Tower.transform.position-spawnLocation,new Vector3(0,1,0)));
+        spawning.speed = 4+data.wave/3;
+        spawning.dps = 1+data.wave/10;
+        spawning.hp = 3+data.wave;
+        spawning.moneyGiven = data.wave;
     }
 
     public void DisplayWave()

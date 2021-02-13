@@ -5,10 +5,10 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour
 {
     public GameObject Tower;
-    private float speed = 5;
-    private double dps = 1;
+    public double speed = 5;
+    public double dps = 1;
     public double hp = 3;
-    private double moneyGiven = 1;
+    public double moneyGiven = 1;
 
     private GameController gameController;
     private Data data;
@@ -31,7 +31,7 @@ public class BasicEnemy : MonoBehaviour
             GrantRewards();
             Destroy(this.gameObject);
         }
-        float step = speed * Time.deltaTime;
+        float step = (float)speed * Time.deltaTime;
         if (Vector3.Distance(transform.position, Tower.transform.position) > 1){
             transform.position = Vector3.MoveTowards(transform.position, Tower.transform.position, step);
         }
