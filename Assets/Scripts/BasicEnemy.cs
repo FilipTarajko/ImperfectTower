@@ -7,7 +7,7 @@ public class BasicEnemy : MonoBehaviour
     public GameObject Tower;
     private float speed = 5;
     private double dps = 1;
-    private double hp = 1;
+    public double hp = 3;
 
     private GameController gameController;
 
