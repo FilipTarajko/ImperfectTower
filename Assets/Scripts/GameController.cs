@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
     private void NextWave()
     {
         data.waveTimer -= data.waveTimer;
-        for (int i = 0; i < 2 * data.wave + 1; i++)
+        for (int i = 0; i < data.wave + 3; i++)
         {
             SpawnNormalEnemy();
         }
@@ -58,7 +58,7 @@ public class GameController : MonoBehaviour
         BasicEnemy spawning = Instantiate(basicEnemy, spawnLocation, Quaternion.LookRotation(Tower.transform.position-spawnLocation,new Vector3(0,1,0)));
         spawning.speed = 4+data.wave/3;
         spawning.dps = 1+data.wave/10;
-        spawning.hp = 3+data.wave;
+        spawning.hp = 2+data.wave;
         spawning.moneyGiven = data.wave;
     }
 

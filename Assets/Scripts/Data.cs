@@ -19,13 +19,13 @@ public class Data : MonoBehaviour
     {
         maxHealth = 10;
         wave = 1;
-        waveTimer = 1;
-        waveTime = 1;
+        waveTimer = 0;
+        waveTime = 3;
         health = maxHealth;
         spawnDistance = 20;
         towerRange = 10;
         shootTimer = 0;
-        shootTime = 0.05;
+        shootTime = 0.3;
         money = 0;
     }
 }

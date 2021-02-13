@@ -18,7 +18,7 @@ public class Tower : MonoBehaviour
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         double shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
+        GameObject nearestEnemy = target;
         foreach(GameObject enemy in enemies)
         {
             double distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
@@ -48,13 +48,16 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        data.shootTimer += Time.deltaTime;
-        if (data.shootTimer > data.shootTime)
+        if (data.shootTimer < data.shootTime)
+        {
+            data.shootTimer += Time.deltaTime;
+        }
+        if (data.shootTimer >= data.shootTime)
         {
             TargetEnemy();
             if (target != null)
             {
-                data.shootTimer = 0;
+                data.shootTimer -= data.shootTime;
                 Shoot(target);
             }
         }
