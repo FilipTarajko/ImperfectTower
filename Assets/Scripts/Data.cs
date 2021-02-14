@@ -14,6 +14,12 @@ public class Data : MonoBehaviour
     public double shootTimer;
     public double shootTime;
     public double money;
+    public float bulletSpeed;
+    public double bulletBaseDamage;
+    public double dmgPerUpgrade;
+    public double attspdPerUpgradeMult;
+    public double healthPerUpgrade;
+    public double hpRegenPerUpgrade;
 
     public class Upgrade
     {
@@ -28,7 +34,13 @@ public class Data : MonoBehaviour
 
     void Awake()
     {
-        upgrades.Add(new Upgrade() { upgradeName = "Damage", upgradeBaseCost = 10, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
-        print(upgrades);
+        upgrades.Add(new Upgrade() { upgradeName = "Damage", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        upgrades.Add(new Upgrade() { upgradeName = "Attack Speed", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        upgrades.Add(new Upgrade() { upgradeName = "Health", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 }); //not yet implemented
+        upgrades.Add(new Upgrade() { upgradeName = "Health regeneration", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        foreach(Upgrade upgrade in upgrades)
+        {
+            print(upgrade.upgradeName);
+        }
     }
 }

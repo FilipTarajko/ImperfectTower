@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        Regeneration();
         if (data.health <= 0)
         {
             SceneManager.LoadSceneAsync(0);
@@ -46,6 +47,11 @@ public class GameController : MonoBehaviour
             healthBar.value = (float)(data.health / data.maxHealth);
             moneyDisplay.text = $"Money: {System.Math.Round(data.money, 1)}";
         }
+    }
+
+    private void Regeneration()
+    {
+        data.health = System.Math.Min(data.maxHealth, data.health + data.hpRegenPerUpgrade * data.upgrades[3].upgradeLevel * Time.deltaTime);
     }
 
     private void NextWave()
