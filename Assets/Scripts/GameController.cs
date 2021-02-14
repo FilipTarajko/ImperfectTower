@@ -15,12 +15,14 @@ public class GameController : MonoBehaviour
     public GameObject tower;
     public Slider healthBar;
 
+    public GameObject ShopMenu;
+
     void Start()
     {
         data = Object.FindObjectOfType<Data>();
+        ShopMenu.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (data.health <= 0)
@@ -73,5 +75,24 @@ public class GameController : MonoBehaviour
     public void DealDamage(double damage)
     {
         data.health -= damage;
+    }
+
+    public void ShowMenu(GameObject menu)
+    {
+        bool shouldBeShown = true;
+        if (menu.activeInHierarchy)
+        {
+            shouldBeShown = false;
+        }
+        ShopMenu.SetActive(false);
+        if (shouldBeShown)
+        {
+            menu.SetActive(true);
+            print($"menu shown: {menu}");
+        }
+        else
+        {
+            print($"menu: {menu} is now hidden");
+        }
     }
 }
