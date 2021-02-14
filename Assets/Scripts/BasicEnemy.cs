@@ -5,18 +5,21 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour
 {
     public GameObject Tower;
-    public double speed = 5;
-    public double dps = 1;
-    public double hp = 3;
-    public double moneyGiven = 1;
+    public double speed;
+    public double dps;
+    public double hp;
+    public double moneyGiven;
 
     private GameController gameController;
     private Data data;
 
-    void Start()
+    public void SetData(Data data)
     {
-        data = Object.FindObjectOfType<Data>();
-        gameController = Object.FindObjectOfType<GameController>();
+        this.data = data;
+    }
+    public void SetGameController(GameController gameController)
+    {
+        this.gameController = gameController;
     }
 
     void GrantRewards()

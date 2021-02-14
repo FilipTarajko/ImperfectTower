@@ -5,13 +5,16 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     private Data data;
+    private Transform _dynamic;
+    [SerializeField] private GameController gameController;
     public GameObject target;
     public GameObject bulletSpawner;
     public GameObject bulletPrefab;
 
     void Start()
     {
-        data = Object.FindObjectOfType<Data>();
+        data = gameController.Data;
+        _dynamic = gameController.Dynamic;
     }
 
     void TargetEnemy()
@@ -42,7 +45,7 @@ public class Tower : MonoBehaviour
     void Shoot(GameObject target)
     {
         print($"Shooting {target}");
-        GameObject shotBulletGO = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+        GameObject shotBulletGO = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation, _dynamic);
         shotBulletGO.GetComponent<Bullet>().target = target;
     }
 

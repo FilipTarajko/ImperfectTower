@@ -7,19 +7,22 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    private Data data;
+    [SerializeField] private Data data;
+    public Data Data => data;
+
     public TMP_Text healthDisplay;
     public TMP_Text waveDisplay;
     public TMP_Text moneyDisplay;
     public BasicEnemy basicEnemy;
     public GameObject tower;
     public Slider healthBar;
-
     public GameObject ShopMenu;
+    [SerializeField] private Transform _dynamic;
+    public Transform Dynamic => _dynamic;
+
 
     void Start()
     {
-        data = Object.FindObjectOfType<Data>();
         ShopMenu.SetActive(false);
     }
 
@@ -60,11 +63,13 @@ public class GameController : MonoBehaviour
     {
         Vector2 spawnDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnLocation = new Vector3(spawnDirection.x*data.spawnDistance, 0, spawnDirection.y*data.spawnDistance);
-        BasicEnemy spawning = Instantiate(basicEnemy, spawnLocation, Quaternion.LookRotation(tower.transform.position-spawnLocation,new Vector3(0,1,0)));
+        BasicEnemy spawning = Instantiate(basicEnemy, spawnLocation, Quaternion.LookRotation(tower.transform.position-spawnLocation,new Vector3(0,1,0)), _dynamic);
         spawning.speed = 4+data.wave/3;
         spawning.dps = 1+data.wave/10;
         spawning.hp = 2+data.wave;
         spawning.moneyGiven = data.wave;
+        spawning.SetData(data);
+        spawning.SetGameController(this);
     }
 
     public void DisplayWave()
