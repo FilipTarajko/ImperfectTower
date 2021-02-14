@@ -25,7 +25,7 @@ public class Tower : MonoBehaviour
         foreach(GameObject enemy in enemies)
         {
             double distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy+0.0001f < shortestDistance)
+            if (distanceToEnemy + 0.01 < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
@@ -44,7 +44,7 @@ public class Tower : MonoBehaviour
 
     void Shoot(GameObject target)
     {
-        print($"Shooting {target}");
+        //print($"Shooting {target}");
         GameObject shotBulletGO = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation, _dynamic);
         shotBulletGO.GetComponent<Bullet>().target = target;
     }

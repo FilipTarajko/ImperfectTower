@@ -35,12 +35,13 @@ public class BasicEnemy : MonoBehaviour
             Destroy(this.gameObject);
         }
         float step = (float)speed * Time.deltaTime;
-        if (Vector3.Distance(transform.position, Tower.transform.position) > 1){
-            transform.position = Vector3.MoveTowards(transform.position, Tower.transform.position, step);
+        float distance = Vector3.Distance(transform.position, Tower.transform.position);
+        if (distance > 1){
+            transform.position = Vector3.MoveTowards(transform.position, Tower.transform.position, System.Math.Min(step,distance-1));
         }
         else
         {
-            print("hit-hit");
+            //print("hit-hit");
             gameController.DealDamage(dps * Time.deltaTime);
         }
     }
