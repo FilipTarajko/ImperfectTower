@@ -15,17 +15,20 @@ public class Data : MonoBehaviour
     public double shootTime;
     public double money;
 
+    public class Upgrade
+    {
+        public string upgradeName;
+        public double upgradeBaseCost;
+        public double upgradeMultCost;
+        public int upgradeMaxLevel;
+        public int upgradeLevel = 0;
+    }
+
+    public List<Upgrade> upgrades = new List<Upgrade>() { };
+
     void Awake()
     {
-        maxHealth = 10;
-        wave = 0;
-        waveTimer = 0;
-        waveTime = 3;
-        health = maxHealth;
-        spawnDistance = 20;
-        towerRange = 10;
-        shootTimer = 0;
-        shootTime = 0.3;
-        money = 0;
+        upgrades.Add(new Upgrade() { upgradeName = "Damage", upgradeBaseCost = 10, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        print(upgrades);
     }
 }
