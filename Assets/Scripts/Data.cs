@@ -17,7 +17,8 @@ public class Data : MonoBehaviour
     public float bulletSpeed;
     public double bulletBaseDamage;
     public double dmgPerUpgrade;
-    public double attspdPerUpgradeMult;
+    public double attSpdPerUpgradeMult;
+    public double attRangePerUpgrade;
     public double healthPerUpgrade;
     public double hpRegenPerUpgrade;
 
@@ -35,8 +36,9 @@ public class Data : MonoBehaviour
     {
         upgrades.Add("Damage",  new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
         upgrades.Add("Attack speed", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        upgrades.Add("Attack range", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 10 });
         upgrades.Add("Health", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 }); //not yet implemented
-        upgrades.Add("Health regeneration", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0, upgradeLevel = 1 });
+        upgrades.Add("Health regeneration", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
         foreach(KeyValuePair<string, Upgrade> entry in upgrades) // WARNING: wypluwa dwa razy
         {
             print(entry.Key);

@@ -32,7 +32,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        if (nearestEnemy != null && shortestDistance <= data.towerRange)
+        if (nearestEnemy != null && shortestDistance <= data.towerRange+data.attRangePerUpgrade*data.upgrades["Attack range"].upgradeLevel)
         {
             target = nearestEnemy;
         }
@@ -54,7 +54,7 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        double shootCd = data.shootTime / System.Math.Pow(data.attspdPerUpgradeMult, data.upgrades["Attack speed"].upgradeLevel);
+        double shootCd = data.shootTime / System.Math.Pow(data.attSpdPerUpgradeMult, data.upgrades["Attack speed"].upgradeLevel);
         if (data.shootTimer < shootCd)
         {
             data.shootTimer += Time.deltaTime;

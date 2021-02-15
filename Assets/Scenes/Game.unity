@@ -326,7 +326,8 @@ MonoBehaviour:
   bulletSpeed: 50
   bulletBaseDamage: 1
   dmgPerUpgrade: 1
-  attspdPerUpgradeMult: 1.1
+  attSpdPerUpgradeMult: 1.1
+  attRangePerUpgrade: 1
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1
 --- !u!1 &74339293
