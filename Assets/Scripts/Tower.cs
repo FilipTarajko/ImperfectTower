@@ -54,16 +54,17 @@ public class Tower : MonoBehaviour
 
     void Update()
     {
-        if (data.shootTimer < data.shootTime / System.Math.Pow(data.attspdPerUpgradeMult, data.upgrades[1].upgradeLevel)) //ugly repetetive
+        double shootCd = data.shootTime / System.Math.Pow(data.attspdPerUpgradeMult, data.upgrades[1].upgradeLevel);
+        if (data.shootTimer < shootCd)
         {
             data.shootTimer += Time.deltaTime;
         }
-        if (data.shootTimer >= data.shootTime / System.Math.Pow(data.attspdPerUpgradeMult, data.upgrades[1].upgradeLevel)) //ugly repetetive
+        if (data.shootTimer >= shootCd)
         {
             TargetEnemy();
             if (target != null)
             {
-                data.shootTimer -= data.shootTime / System.Math.Pow(data.attspdPerUpgradeMult, data.upgrades[1].upgradeLevel); //ugly repetetive
+                data.shootTimer -= shootCd;
                 Shoot(target);
             }
         }
