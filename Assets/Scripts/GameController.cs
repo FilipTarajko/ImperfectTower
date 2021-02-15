@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         {
             if (data.waveTimer >= data.waveTime)
             {
-                NextWave();
+                StartCoroutine(NextWave());
             }
             else
             {
@@ -54,16 +54,19 @@ public class GameController : MonoBehaviour
         data.health = System.Math.Min(data.maxHealth, data.health + data.hpRegenPerUpgrade * data.upgrades["Health regeneration"].upgradeLevel * Time.deltaTime);
     }
 
-    private void NextWave()
+    IEnumerator NextWave()
     {
         data.wave += 1;
+        DisplayWave();
         data.waveTimer -= data.waveTimer;
-        for (int i = 0; i < data.wave + 3; i++)
+        int waveEnemiesNumber = data.waveSpawnA1*(int)data.wave + data.waveSpawnA0;
+        for (int i = 0; i < waveEnemiesNumber; i++)
         {
             SpawnNormalEnemy();
+            yield return new WaitForSeconds((float)data.waveDuration/(((float)waveEnemiesNumber) - 1));
         }
-        DisplayWave();
     }
+
 
     private void SpawnNormalEnemy()
     {

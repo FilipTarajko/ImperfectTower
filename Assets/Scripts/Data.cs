@@ -4,18 +4,28 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
+    [Header("base stats")]
     public double health;
     public double maxHealth;
+    public double bulletBaseDamage;
+    public float bulletSpeed;
+    public double shootTime;
+    public double towerRange;
+
+    [Header("initial stats")]
+    public double money;
+    public double shootTimer;
     public double wave;
+
+    [Header("waves stuff")]
+    public double waveDuration;
     public double waveTimer;
     public double waveTime;
     public float spawnDistance;
-    public double towerRange;
-    public double shootTimer;
-    public double shootTime;
-    public double money;
-    public float bulletSpeed;
-    public double bulletBaseDamage;
+    public int waveSpawnA1;
+    public int waveSpawnA0;
+
+    [Header("Upgrade bonuses")]
     public double dmgPerUpgrade;
     public double attSpdPerUpgradeMult;
     public double attRangePerUpgrade;

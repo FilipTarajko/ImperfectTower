@@ -315,16 +315,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   maxHealth: 10
-  wave: 0
-  waveTimer: 0
-  waveTime: 3
-  spawnDistance: 20
-  towerRange: 10
-  shootTimer: 0
-  shootTime: 0.3
-  money: 0
-  bulletSpeed: 50
   bulletBaseDamage: 1
+  bulletSpeed: 50
+  shootTime: 0.3
+  towerRange: 10
+  money: 0
+  shootTimer: 0
+  wave: 0
+  waveDuration: 2
+  waveTimer: 3
+  waveTime: 5
+  spawnDistance: 20
+  waveSpawnA1: 1
+  waveSpawnA0: 3
   dmgPerUpgrade: 1
   attSpdPerUpgradeMult: 1.1
   attRangePerUpgrade: 1
