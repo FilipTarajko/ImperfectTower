@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour
 
     private void Regeneration()
     {
-        data.health = System.Math.Min(data.maxHealth, data.health + data.hpRegenPerUpgrade * data.upgrades[3].upgradeLevel * Time.deltaTime);
+        data.health = System.Math.Min(data.maxHealth, data.health + data.hpRegenPerUpgrade * data.upgrades["Health regeneration"].upgradeLevel * Time.deltaTime);
     }
 
     private void NextWave()

@@ -23,24 +23,23 @@ public class Data : MonoBehaviour
 
     public class Upgrade
     {
-        public string upgradeName;
         public double upgradeBaseCost;
         public double upgradeMultCost;
         public int upgradeMaxLevel;
         public int upgradeLevel = 0;
     }
 
-    public List<Upgrade> upgrades = new List<Upgrade>() { };
+    public Dictionary<string, Upgrade> upgrades = new Dictionary<string, Upgrade>() { };
 
     void Awake()
     {
-        upgrades.Add(new Upgrade() { upgradeName = "Damage", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
-        upgrades.Add(new Upgrade() { upgradeName = "Attack Speed", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
-        upgrades.Add(new Upgrade() { upgradeName = "Health", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 }); //not yet implemented
-        upgrades.Add(new Upgrade() { upgradeName = "Health regeneration", upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
-        foreach(Upgrade upgrade in upgrades) // wypluwa dwa razy
+        upgrades.Add("Damage",  new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        upgrades.Add("Attack speed", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
+        upgrades.Add("Health", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 }); //not yet implemented
+        upgrades.Add("Health regeneration", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0, upgradeLevel = 1 });
+        foreach(KeyValuePair<string, Upgrade> entry in upgrades) // WARNING: wypluwa dwa razy
         {
-            print(upgrade.upgradeName);
+            print(entry.Key);
         }
         print(upgrades.Count);
     }
