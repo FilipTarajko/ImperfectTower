@@ -54,7 +54,7 @@ public class Tower : MonoBehaviour
 
     private double GetAttspdFactor()
     {
-        return System.Math.Pow(data.attSpdPerUpgradeMult, data.upgrades["Attack speed"].upgradeLevel);
+        return (1 + data.attSpdPerUpgrade * data.upgrades["Attack speed"].upgradeLevel);
     }
 
     void Update()

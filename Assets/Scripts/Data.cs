@@ -27,7 +27,7 @@ public class Data : MonoBehaviour
 
     [Header("Upgrade bonuses")]
     public double dmgPerUpgrade;
-    public double attSpdPerUpgradeMult;
+    public double attSpdPerUpgrade;
     public double attRangePerUpgrade;
     public double healthPerUpgrade;
     public double hpRegenPerUpgrade;

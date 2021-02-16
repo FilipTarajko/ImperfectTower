@@ -182,7 +182,7 @@ MonoBehaviour:
   waveSpawnA1: 1
   waveSpawnA0: 3
   dmgPerUpgrade: 1
-  attSpdPerUpgradeMult: 1.1
+  attSpdPerUpgrade: 0.1
   attRangePerUpgrade: 1
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1
