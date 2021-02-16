@@ -9,7 +9,7 @@ public class Data : MonoBehaviour
     public double maxHealth;
     public double bulletBaseDamage;
     public float bulletSpeed;
-    public double shootTime;
+    public double attSpd;
     public double towerRange;
 
     [Header("initial stats")]
@@ -80,8 +80,8 @@ public class Data : MonoBehaviour
     {
         return bulletBaseDamage + upgrades["Damage"].upgradeLevel * dmgPerUpgrade;
     }
-    public double GetAttspdFactor()
+    public double GetAttspd()
     {
-        return (1 + attSpdPerUpgrade * upgrades["Attack speed"].upgradeLevel);
+        return attSpd + attSpdPerUpgrade * upgrades["Attack speed"].upgradeLevel;
     }
 }

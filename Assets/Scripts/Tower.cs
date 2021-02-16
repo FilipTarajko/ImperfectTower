@@ -49,14 +49,14 @@ public class Tower : MonoBehaviour
         Bullet shotBullet = shotBulletGO.GetComponent<Bullet>();
         shotBullet.target = target;
         shotBullet.dmg = data.GetBulletDamage(); //temp?
-        shotBullet.speed = data.bulletSpeed * (float)data.GetAttspdFactor();
+        shotBullet.speed = data.bulletSpeed * (float)data.GetAttspd();
     }
 
     
 
     void Update()
     {
-        double shootCd = data.shootTime / data.GetAttspdFactor();
+        double shootCd = 1/data.GetAttspd();
         if (data.shootTimer < shootCd)
         {
             data.shootTimer += Time.deltaTime;

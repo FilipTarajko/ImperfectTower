@@ -169,8 +169,8 @@ MonoBehaviour:
   health: 10
   maxHealth: 10
   bulletBaseDamage: 1
-  bulletSpeed: 50
-  shootTime: 0.3
+  bulletSpeed: 18
+  attSpd: 3
   towerRange: 10
   money: 0
   shootTimer: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   waveSpawnA1: 1
   waveSpawnA0: 3
   dmgPerUpgrade: 1
-  attSpdPerUpgrade: 0.1
+  attSpdPerUpgrade: 0.25
   attRangePerUpgrade: 1
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1

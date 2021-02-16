@@ -27,7 +27,7 @@ public class StatsDisplay : MonoBehaviour
     
     public void SetAttspdDisplay()
     {
-        attspdDisplay.text = $"{data.GetAttspdFactor()} att/spd";
+        attspdDisplay.text = $"{data.GetAttspd()} att/spd";
     }
 
     public void SetWaveDisplay()
