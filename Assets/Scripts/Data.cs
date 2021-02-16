@@ -49,10 +49,10 @@ public class Data : MonoBehaviour
         upgrades.Add("Attack range", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 10 });
         upgrades.Add("Health", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 }); //not yet implemented
         upgrades.Add("Health regeneration", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
-        foreach(KeyValuePair<string, Upgrade> entry in upgrades) // WARNING: wypluwa dwa razy
-        {
-            //print(entry.Key);
-        }
+        //foreach(KeyValuePair<string, Upgrade> entry in upgrades) // WARNING: wypluwa dwa razy
+        //{
+        //    print(entry.Key);
+        //}
         //print(upgrades.Count);
     }
 }
