@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour
     public GameObject tower;
     public Slider healthBar;
     public GameObject ShopMenu;
+    public GameObject SettingsMenu;
     [SerializeField] private Transform _dynamic;
     public Transform Dynamic => _dynamic;
     public Transform ShopContent;
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour
     void HideMenus()
     {
         ShopMenu.SetActive(false);
+        SettingsMenu.SetActive(false);
     }
 
     void GenerateBuyingBars()
@@ -168,7 +170,7 @@ public class GameController : MonoBehaviour
         {
             shouldBeShown = false;
         }
-        ShopMenu.SetActive(false);
+        HideMenus();
         if (shouldBeShown)
         {
             menu.SetActive(true);
