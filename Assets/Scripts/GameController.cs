@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private Data data;
+    [SerializeField] private StatsDisplay statsDisplay;
     public Data Data => data;
 
     public TMP_Text healthDisplay;
@@ -82,6 +83,14 @@ public class GameController : MonoBehaviour
             data.money -= Cost(name);
             data.upgrades[name].upgradeLevel += 1;
             SetBuyingBarTexts(name);
+            if (name == "Damage")
+            {
+                statsDisplay.SetDamageDisplay();
+            }
+            if (name == "Attack speed")
+            {
+                statsDisplay.SetAttspdDisplay();
+            }
             if (name == "Health")
             {
                 data.health += data.healthPerUpgrade;
@@ -130,8 +139,9 @@ public class GameController : MonoBehaviour
     {
         data.wave += 1;
         DisplayWave();
+        statsDisplay.SetWaveDisplay();
         data.waveTimer -= data.waveTimer;
-        int waveEnemiesNumber = data.waveSpawnA1*(int)data.wave + data.waveSpawnA0;
+        int waveEnemiesNumber = data.GetWaveEnemiesCount();
         for (int i = 0; i < waveEnemiesNumber; i++)
         {
             SpawnNormalEnemy();
@@ -139,16 +149,15 @@ public class GameController : MonoBehaviour
         }
     }
 
-
     private void SpawnNormalEnemy()
     {
         Vector2 spawnDirection = Random.insideUnitCircle.normalized;
         Vector3 spawnLocation = new Vector3(spawnDirection.x*data.spawnDistance, 0, spawnDirection.y*data.spawnDistance);
         BasicEnemy spawning = Instantiate(basicEnemy, spawnLocation, Quaternion.LookRotation(tower.transform.position-spawnLocation,new Vector3(0,1,0)), _dynamic);
-        spawning.speed = 4+data.wave/3;
-        spawning.dps = 1+data.wave/10;
-        spawning.hp = 2+data.wave;
-        spawning.moneyGiven = data.wave;
+        spawning.speed = data.GetWaveEnemiesSpeed();
+        spawning.dps = data.GetWaveEnemiesDps();
+        spawning.hp = data.GetWaveEnemiesHealth();
+        spawning.moneyGiven = data.GetWaveEnemiesMoney();
         spawning.SetData(data);
         spawning.SetGameController(this);
     }

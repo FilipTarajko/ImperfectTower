@@ -48,18 +48,15 @@ public class Tower : MonoBehaviour
         GameObject shotBulletGO = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation, _dynamic);
         Bullet shotBullet = shotBulletGO.GetComponent<Bullet>();
         shotBullet.target = target;
-        shotBullet.dmg = data.bulletBaseDamage + data.upgrades["Damage"].upgradeLevel * data.dmgPerUpgrade; //temp?
-        shotBullet.speed = data.bulletSpeed * (float)GetAttspdFactor();
+        shotBullet.dmg = data.GetBulletDamage(); //temp?
+        shotBullet.speed = data.bulletSpeed * (float)data.GetAttspdFactor();
     }
 
-    private double GetAttspdFactor()
-    {
-        return (1 + data.attSpdPerUpgrade * data.upgrades["Attack speed"].upgradeLevel);
-    }
+    
 
     void Update()
     {
-        double shootCd = data.shootTime / GetAttspdFactor();
+        double shootCd = data.shootTime / data.GetAttspdFactor();
         if (data.shootTimer < shootCd)
         {
             data.shootTimer += Time.deltaTime;

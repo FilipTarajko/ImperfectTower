@@ -55,4 +55,33 @@ public class Data : MonoBehaviour
         //}
         //print(upgrades.Count);
     }
+
+    public int GetWaveEnemiesCount()
+    {
+        return waveSpawnA1 * (int)wave + waveSpawnA0;
+    }
+    public double GetWaveEnemiesHealth()
+    {
+        return 2 + wave;
+    }
+    public double GetWaveEnemiesDps()
+    {
+        return 0.9 + wave / 10;
+    }
+    public double GetWaveEnemiesSpeed()
+    {
+        return 4 + wave / 3;
+    }
+    public double GetWaveEnemiesMoney()
+    {
+        return wave;
+    }
+    public double GetBulletDamage()
+    {
+        return bulletBaseDamage + upgrades["Damage"].upgradeLevel * dmgPerUpgrade;
+    }
+    public double GetAttspdFactor()
+    {
+        return (1 + attSpdPerUpgrade * upgrades["Attack speed"].upgradeLevel);
+    }
 }
