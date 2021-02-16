@@ -51,8 +51,8 @@ public class Data : MonoBehaviour
         upgrades.Add("Health regeneration", new Upgrade() { upgradeBaseCost = 1, upgradeMultCost = 1.4, upgradeMaxLevel = 0 });
         foreach(KeyValuePair<string, Upgrade> entry in upgrades) // WARNING: wypluwa dwa razy
         {
-            print(entry.Key);
+            //print(entry.Key);
         }
-        print(upgrades.Count);
+        //print(upgrades.Count);
     }
 }

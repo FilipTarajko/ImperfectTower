@@ -19,11 +19,81 @@ public class GameController : MonoBehaviour
     public GameObject ShopMenu;
     [SerializeField] private Transform _dynamic;
     public Transform Dynamic => _dynamic;
+    public Transform ShopContent;
+    public UpgradeBuyingBar upgradeBuyingBar;
 
+    public Dictionary<string, UpgradeBuyingBar> buyingBars = new Dictionary<string, UpgradeBuyingBar>() { };
 
     void Start()
     {
+        HideMenus();
+        GenerateBuyingBars();
+    }
+
+    void HideMenus()
+    {
         ShopMenu.SetActive(false);
+    }
+
+    void GenerateBuyingBars()
+    {
+        foreach (KeyValuePair<string, Data.Upgrade> entry in data.upgrades)
+        {
+            UpgradeBuyingBar buying = Instantiate(upgradeBuyingBar, ShopContent);
+            buying.upgradeName = entry.Key;
+            buyingBars.Add(entry.Key, buying);
+            SetBuyingBarTexts(entry.Key);
+            buying.GetComponentInChildren<ButtonBuyUpgrade>().gameController = this;
+        }
+        foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
+        {
+            print(entry.Key);
+        }
+        print(buyingBars.Count);
+    }
+
+    private double Cost(string name)
+    {
+        return data.upgrades[name].upgradeBaseCost * System.Math.Pow(data.upgrades[name].upgradeMultCost, data.upgrades[name].upgradeLevel);
+    }
+
+    public void SetBuyingBarTexts(string name)
+    {
+        buyingBars[name].upgradeNameText.text = name;
+        if (data.upgrades[name].upgradeMaxLevel == 0)
+        {
+            buyingBars[name].upgradeLevelsText.text = $"{data.upgrades[name].upgradeLevel}";
+        }
+        else
+        {
+            buyingBars[name].upgradeLevelsText.text = $"{data.upgrades[name].upgradeLevel}/{data.upgrades[name].upgradeMaxLevel}";
+        }
+        buyingBars[name].upgradeButtonText.text = $"+1 level for {System.Math.Round(Cost(name),2)}";
+    }
+
+    public void BuyUpgrade(string name)
+    {
+        print($"you tried to buy {name} upgrade");
+        if (data.money >= Cost(name) && (data.upgrades[name].upgradeLevel < data.upgrades[name].upgradeMaxLevel || data.upgrades[name].upgradeMaxLevel == 0))
+        {
+            print($"you have enough money to buy {name}");
+            data.money -= Cost(name);
+            data.upgrades[name].upgradeLevel += 1;
+            SetBuyingBarTexts(name);
+            if (name == "Health")
+            {
+                data.health += data.healthPerUpgrade;
+                data.maxHealth += data.healthPerUpgrade;
+            }
+        }
+        else if (data.money < Cost(name))
+        {
+            print($"not enough money to buy {name}!");
+        }
+        else
+        {
+            print($"upgrade {name} already at max level!");
+        }
     }
 
     void Update()
@@ -45,7 +115,7 @@ public class GameController : MonoBehaviour
             }
             healthDisplay.text = $"{System.Math.Round(data.health, 1)}/{System.Math.Round(data.maxHealth, 1)}";
             healthBar.value = (float)(data.health / data.maxHealth);
-            moneyDisplay.text = $"Money: {System.Math.Round(data.money, 1)}";
+            moneyDisplay.text = $"Money: {System.Math.Round(data.money, 2)}";
         }
     }
 
