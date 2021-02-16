@@ -112,7 +112,7 @@ public class GameController : MonoBehaviour
         Regeneration();
         if (data.health <= 0)
         {
-            SceneManager.LoadSceneAsync(0);
+            SceneManager.LoadSceneAsync("MainMenu");
         }
         else
         {
