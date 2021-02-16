@@ -64,6 +64,7 @@ MonoBehaviour:
   upgradeName: 
   upgradeNameText: {fileID: 2160028619963692922}
   upgradeLevelsText: {fileID: 2160028619266103813}
+  upgradeButton: {fileID: 7712456461500199163}
   upgradeButtonText: {fileID: 1181991343023680771}
 --- !u!1 &2160028619266103815
 GameObject:

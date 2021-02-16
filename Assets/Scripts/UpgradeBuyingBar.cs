@@ -8,5 +8,6 @@ public class UpgradeBuyingBar : MonoBehaviour
     public string upgradeName;
     public TMP_Text upgradeNameText;
     public TMP_Text upgradeLevelsText;
+    public GameObject upgradeButton;
     public TMP_Text upgradeButtonText;
 }

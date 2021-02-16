@@ -71,7 +71,14 @@ public class GameController : MonoBehaviour
         {
             buyingBars[name].upgradeLevelsText.text = $"{data.upgrades[name].upgradeLevel}/{data.upgrades[name].upgradeMaxLevel}";
         }
-        buyingBars[name].upgradeButtonText.text = $"+1 level for {System.Math.Round(Cost(name),2)}";
+        if (data.upgrades[name].upgradeMaxLevel > 0 && data.upgrades[name].upgradeLevel == data.upgrades[name].upgradeMaxLevel) //max level reached
+        {
+            buyingBars[name].upgradeButton.SetActive(false);
+        }
+        else //can still be bought
+        {
+            buyingBars[name].upgradeButtonText.text = $"+1 level for {System.Math.Round(Cost(name), 2)}";
+        }
     }
 
     public void BuyUpgrade(string name)
