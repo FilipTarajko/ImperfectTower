@@ -32,6 +32,9 @@ public class Data : MonoBehaviour
     public double healthPerUpgrade;
     public double hpRegenPerUpgrade;
 
+    [Header("Settings")]
+    public bool showMaxedUpgrades;
+
     public class Upgrade
     {
         public double upgradeBaseCost;

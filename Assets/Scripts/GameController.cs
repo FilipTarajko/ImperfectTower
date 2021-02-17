@@ -73,7 +73,14 @@ public class GameController : MonoBehaviour
         }
         if (data.upgrades[name].upgradeMaxLevel > 0 && data.upgrades[name].upgradeLevel == data.upgrades[name].upgradeMaxLevel) //max level reached
         {
-            buyingBars[name].upgradeButton.SetActive(false);
+            if (data.showMaxedUpgrades)
+            {
+                buyingBars[name].upgradeButton.SetActive(false);
+            }
+            else
+            {
+                buyingBars[name].gameObject.SetActive(false);
+            }
         }
         else //can still be bought
         {
@@ -195,6 +202,18 @@ public class GameController : MonoBehaviour
         else
         {
             print($"menu: {menu} is now hidden");
+        }
+    }
+
+    public void ChangeVisibilityOfMaxedUpgrades(bool value)
+    {
+        data.showMaxedUpgrades = value;
+        foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
+        {
+            if(data.upgrades[entry.Key].upgradeMaxLevel > 0 && data.upgrades[entry.Key].upgradeLevel == data.upgrades[entry.Key].upgradeMaxLevel)
+            {
+                buyingBars[entry.Key].gameObject.SetActive(value);
+            }
         }
     }
 }
