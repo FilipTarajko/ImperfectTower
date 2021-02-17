@@ -480,6 +480,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splashdisplay: {fileID: 271984300}
   splashshadow: {fileID: 744617186}
+  scale: 1
+  change: 1
 --- !u!1 &694340129
 GameObject:
   m_ObjectHideFlags: 0
