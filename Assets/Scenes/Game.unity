@@ -187,6 +187,7 @@ MonoBehaviour:
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1
   showMaxedUpgrades: 1
+  additionalStartingMoney: 0
 --- !u!1 &74792932
 GameObject:
   m_ObjectHideFlags: 0

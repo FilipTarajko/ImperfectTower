@@ -73,14 +73,11 @@ public class GameController : MonoBehaviour
         }
         if (data.upgrades[name].upgradeMaxLevel > 0 && data.upgrades[name].upgradeLevel == data.upgrades[name].upgradeMaxLevel) //max level reached
         {
-            if (data.showMaxedUpgrades)
-            {
-                buyingBars[name].upgradeButton.SetActive(false);
-            }
-            else
+            if (!data.showMaxedUpgrades)
             {
                 buyingBars[name].gameObject.SetActive(false);
             }
+            buyingBars[name].upgradeButton.SetActive(false);
         }
         else //can still be bought
         {

@@ -35,6 +35,14 @@ public class Data : MonoBehaviour
     [Header("Settings")]
     public bool showMaxedUpgrades;
 
+    [Header("Debug")]
+    public double additionalStartingMoney;
+
+    private void Start()
+    {
+        money += additionalStartingMoney;
+    }
+
     public class Upgrade
     {
         public double upgradeBaseCost;
