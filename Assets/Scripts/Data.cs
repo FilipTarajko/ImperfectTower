@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class Data : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class Data : MonoBehaviour
 
     [Header("initial stats")]
     public double money;
+    public double accumulated;
     public double shootTimer;
     public double wave;
 
@@ -124,5 +127,11 @@ public class Data : MonoBehaviour
     public double GetAttspd()
     {
         return attSpd + attSpdPerUpgrade * upgrades["Attack speed"].upgradeLevel;
+    }
+
+    public void AddMoney(double amount)
+    {
+        money += amount;
+        accumulated += amount;
     }
 }

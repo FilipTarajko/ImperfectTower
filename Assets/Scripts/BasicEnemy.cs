@@ -33,7 +33,7 @@ public class BasicEnemy : MonoBehaviour
 
     void GrantRewards()
     {
-        data.money += moneyGiven;
+        data.AddMoney(moneyGiven);
     }
 
     private void Update()
