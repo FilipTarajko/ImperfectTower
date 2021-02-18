@@ -22,14 +22,25 @@ public class GameController : MonoBehaviour
     [SerializeField] private Transform _dynamic;
     public Transform Dynamic => _dynamic;
     public Transform ShopContent;
+    public Transform SettingsContent;
     public UpgradeBuyingBar upgradeBuyingBar;
+    public SettingBar settingBar;
 
     public Dictionary<string, UpgradeBuyingBar> buyingBars = new Dictionary<string, UpgradeBuyingBar>() { };
 
     void Start()
     {
+        //ClearPlayerPrefs();
         HideMenus();
         GenerateBuyingBars();
+        GenerateSettingBars();
+    }
+
+    void ClearPlayerPrefs()
+    {
+        PlayerPrefs.DeleteKey("Show maxed upgrades");
+        PlayerPrefs.DeleteKey("Show floating damage text");
+        PlayerPrefs.Save();
     }
 
     void HideMenus()
@@ -53,6 +64,24 @@ public class GameController : MonoBehaviour
             //print(entry.Key);
         }
         //print(buyingBars.Count);
+    }
+
+    void GenerateSettingBars()
+    {
+        foreach (KeyValuePair<string, bool> entry in data.settings)
+        {
+            SettingBar setting = Instantiate(settingBar, SettingsContent);
+            setting.gameController = this;
+            setting.settingName = entry.Key;
+            if (PlayerPrefs.HasKey(entry.Key))
+            {
+                if (!IntToBool(PlayerPrefs.GetInt(entry.Key)))
+                {
+                    setting.ignore = 1;
+                    setting.GetComponentInChildren<Toggle>().isOn = false;
+                }
+            }
+        }
     }
 
     private double Cost(string name)
@@ -202,20 +231,44 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void ChangeVisibilityOfMaxedUpgrades(bool value)
+    public int BoolToInt(bool value)
     {
-        data.settings["Show maxed upgrades"] = value;
-        foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
+        if (value)
         {
-            if(data.upgrades[entry.Key].upgradeMaxLevel > 0 && data.upgrades[entry.Key].upgradeLevel == data.upgrades[entry.Key].upgradeMaxLevel)
-            {
-                buyingBars[entry.Key].gameObject.SetActive(value);
-            }
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
 
-    public void ChangeVisibilityOfFloatingDamageText(bool value)
+    public bool IntToBool(int value)
     {
-        data.settings["Show floating damage text"] = value;
+        if (value == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void ChangeSetting(bool value, string settingName)
+    {
+        data.settings[settingName] = value;
+        PlayerPrefs.SetInt(settingName, BoolToInt(value));
+        PlayerPrefs.Save();
+        if (settingName == "Show maxed upgrades")
+        {
+            foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
+            {
+                if (data.upgrades[entry.Key].upgradeMaxLevel > 0 && data.upgrades[entry.Key].upgradeLevel == data.upgrades[entry.Key].upgradeMaxLevel)
+                {
+                    buyingBars[entry.Key].gameObject.SetActive(value);
+                }
+            }
+        }
     }
 }

@@ -71,9 +71,30 @@ public class Data : MonoBehaviour
         //    print(entry.Key);
         //}
         //print(upgrades.Count);
+        string[] settingsArray = { "Show maxed upgrades", "Show floating damage text" };
+        foreach (string setting in settingsArray)
+        {
+            if (PlayerPrefs.HasKey(setting))
+            {
+                settings.Add(setting, IntToBool(PlayerPrefs.GetInt(setting)));
+            }
+            else
+            {
+                settings.Add(setting, true);
+            }
+        }
+    }
 
-        settings.Add("Show maxed upgrades", true);
-        settings.Add("Show floating damage text", true);
+    private bool IntToBool(int value)
+    {
+        if (value == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public int GetWaveEnemiesCount()
