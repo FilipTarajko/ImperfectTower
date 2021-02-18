@@ -50,9 +50,9 @@ public class GameController : MonoBehaviour
         }
         foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
         {
-            print(entry.Key);
+            //print(entry.Key);
         }
-        print(buyingBars.Count);
+        //print(buyingBars.Count);
     }
 
     private double Cost(string name)
@@ -87,10 +87,10 @@ public class GameController : MonoBehaviour
 
     public void BuyUpgrade(string name)
     {
-        print($"you tried to buy {name} upgrade");
+        //print($"you tried to buy {name} upgrade");
         if (data.money >= Cost(name) && (data.upgrades[name].upgradeLevel < data.upgrades[name].upgradeMaxLevel || data.upgrades[name].upgradeMaxLevel == 0))
         {
-            print($"you have enough money to buy {name}");
+            //print($"you have enough money to buy {name}");
             data.money -= Cost(name);
             data.upgrades[name].upgradeLevel += 1;
             SetBuyingBarTexts(name);
@@ -110,11 +110,11 @@ public class GameController : MonoBehaviour
         }
         else if (data.money < Cost(name))
         {
-            print($"not enough money to buy {name}!");
+            //print($"not enough money to buy {name}!");
         }
         else
         {
-            print($"upgrade {name} already at max level!");
+            //print($"upgrade {name} already at max level!");
         }
     }
 
@@ -194,11 +194,11 @@ public class GameController : MonoBehaviour
         if (shouldBeShown)
         {
             menu.SetActive(true);
-            print($"menu shown: {menu}");
+            //print($"menu shown: {menu}");
         }
         else
         {
-            print($"menu: {menu} is now hidden");
+            //print($"menu: {menu} is now hidden");
         }
     }
 

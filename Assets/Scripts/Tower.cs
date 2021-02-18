@@ -7,7 +7,7 @@ public class Tower : MonoBehaviour
     private Data data;
     private Transform _dynamic;
     [SerializeField] private GameController gameController;
-    public GameObject target;
+    public BasicEnemy target;
     public GameObject bulletSpawner;
     public GameObject bulletPrefab;
 
@@ -19,10 +19,10 @@ public class Tower : MonoBehaviour
 
     void TargetEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        BasicEnemy[] enemies = FindObjectsOfType<BasicEnemy>();
         double shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = target;
-        foreach(GameObject enemy in enemies)
+        BasicEnemy nearestEnemy = target;
+        foreach(BasicEnemy enemy in enemies)
         {
             double distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
             if (distanceToEnemy + 0.1 < shortestDistance)
@@ -42,7 +42,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    void Shoot(GameObject target)
+    void Shoot(BasicEnemy target)
     {
         //print($"Shooting {target}");
         GameObject shotBulletGO = Instantiate(bulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation, _dynamic);

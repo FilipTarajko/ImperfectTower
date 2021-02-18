@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject target;
+    public BasicEnemy target;
     public float speed;
     public double dmg;
+
+    private void Start()
+    {
+        FloatingTextController.Initialize();
+    }
 
     private void Update()
     {
@@ -23,8 +28,7 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                target.GetComponent<BasicEnemy>().hp -= dmg;
-                //Destroy(target); //temp
+                target.TakeDamage(dmg);
                 Destroy(this.gameObject);
             }
         }

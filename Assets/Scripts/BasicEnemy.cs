@@ -22,6 +22,12 @@ public class BasicEnemy : MonoBehaviour
         this.gameController = gameController;
     }
 
+    public void TakeDamage(double damage)
+    {
+        FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+        hp -= damage;
+    }
+
     void GrantRewards()
     {
         data.money += moneyGiven;
