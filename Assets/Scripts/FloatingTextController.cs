@@ -5,11 +5,11 @@ using UnityEngine;
 public class FloatingTextController : MonoBehaviour
 {
     private static FloatingText popupText;
-    private static GameObject canvas;
+    private static GameObject parent;
 
     public static void Initialize()
     {
-        canvas = GameObject.Find("Canvas");
+        parent = GameObject.Find("Canvas/PopupTexts");
         if (!popupText)
         {
             popupText = Resources.Load<FloatingText>("Prefabs/PopupTextParent");
@@ -20,7 +20,7 @@ public class FloatingTextController : MonoBehaviour
     {
         FloatingText instance = Instantiate(popupText);
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(location.position);
-        instance.transform.SetParent(canvas.transform, false);
+        instance.transform.SetParent(parent.transform, false);
         instance.transform.position = screenPosition;
         instance.SetText(text);
     }
