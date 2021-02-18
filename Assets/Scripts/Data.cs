@@ -32,17 +32,22 @@ public class Data : MonoBehaviour
     public double healthPerUpgrade;
     public double hpRegenPerUpgrade;
 
-    [Header("Settings")]
-    public bool showMaxedUpgrades;
-    public bool showFloatingDamageText;
-
     [Header("Debug")]
+    public bool debugSettings;
     public double additionalStartingMoney;
+    public double additionalStartingHealth;
 
     private void Start()
     {
-        money += additionalStartingMoney;
+        if (debugSettings)
+        {
+            money += additionalStartingMoney;
+            maxHealth += additionalStartingHealth;
+            health += additionalStartingHealth;
+        }
     }
+
+    public Dictionary<string, bool> settings = new Dictionary<string, bool>() { };
 
     public class Upgrade
     {
@@ -66,6 +71,9 @@ public class Data : MonoBehaviour
         //    print(entry.Key);
         //}
         //print(upgrades.Count);
+
+        settings.Add("MaxedUpgradesVisibility", true);
+        settings.Add("FloatingDamageTextVisibility", true);
     }
 
     public int GetWaveEnemiesCount()

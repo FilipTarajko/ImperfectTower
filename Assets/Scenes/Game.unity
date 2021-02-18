@@ -186,9 +186,9 @@ MonoBehaviour:
   attRangePerUpgrade: 1
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1
-  showMaxedUpgrades: 1
-  showFloatingDamageText: 1
-  additionalStartingMoney: 0
+  debugSettings: 1
+  additionalStartingMoney: 12345
+  additionalStartingHealth: 12345
 --- !u!1001 &50434774
 PrefabInstance:
   m_ObjectHideFlags: 0
