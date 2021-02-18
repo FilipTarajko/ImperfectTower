@@ -24,7 +24,10 @@ public class BasicEnemy : MonoBehaviour
 
     public void TakeDamage(double damage)
     {
-        FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+        if (data.showFloatingDamageText)
+        {
+            FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+        }
         hp -= damage;
     }
 

@@ -213,4 +213,9 @@ public class GameController : MonoBehaviour
             }
         }
     }
+
+    public void ChangeVisibilityOfFloatingDamageText(bool value)
+    {
+        data.showFloatingDamageText = value;
+    }
 }

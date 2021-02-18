@@ -34,6 +34,7 @@ public class Data : MonoBehaviour
 
     [Header("Settings")]
     public bool showMaxedUpgrades;
+    public bool showFloatingDamageText;
 
     [Header("Debug")]
     public double additionalStartingMoney;
