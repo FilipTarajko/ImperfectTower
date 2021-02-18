@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
         }
         if (data.upgrades[name].upgradeMaxLevel > 0 && data.upgrades[name].upgradeLevel == data.upgrades[name].upgradeMaxLevel) //max level reached
         {
-            if (!data.settings["MaxedUpgradesVisibility"])
+            if (!data.settings["Show maxed upgrades"])
             {
                 buyingBars[name].gameObject.SetActive(false);
             }
@@ -204,7 +204,7 @@ public class GameController : MonoBehaviour
 
     public void ChangeVisibilityOfMaxedUpgrades(bool value)
     {
-        data.settings["MaxedUpgradesVisibility"] = value;
+        data.settings["Show maxed upgrades"] = value;
         foreach (KeyValuePair<string, UpgradeBuyingBar> entry in buyingBars)
         {
             if(data.upgrades[entry.Key].upgradeMaxLevel > 0 && data.upgrades[entry.Key].upgradeLevel == data.upgrades[entry.Key].upgradeMaxLevel)
@@ -216,6 +216,6 @@ public class GameController : MonoBehaviour
 
     public void ChangeVisibilityOfFloatingDamageText(bool value)
     {
-        data.settings["FloatingDamageTextVisibility"] = value;
+        data.settings["Show floating damage text"] = value;
     }
 }

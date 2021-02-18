@@ -72,8 +72,8 @@ public class Data : MonoBehaviour
         //}
         //print(upgrades.Count);
 
-        settings.Add("MaxedUpgradesVisibility", true);
-        settings.Add("FloatingDamageTextVisibility", true);
+        settings.Add("Show maxed upgrades", true);
+        settings.Add("Show floating damage text", true);
     }
 
     public int GetWaveEnemiesCount()

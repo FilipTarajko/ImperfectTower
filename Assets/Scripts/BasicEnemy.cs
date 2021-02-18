@@ -24,7 +24,7 @@ public class BasicEnemy : MonoBehaviour
 
     public void TakeDamage(double damage)
     {
-        if (data.settings["FloatingDamageTextVisibility"])
+        if (data.settings["Show floating damage text"])
         {
             FloatingTextController.CreateFloatingText(damage.ToString(), transform);
         }
