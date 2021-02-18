@@ -20,7 +20,7 @@ public class SettingBar : MonoBehaviour
     {
         if(ignore == 1)
         {
-            print("Change skipped (changing to match save)");
+            //print("Change skipped (changing to match save)");
             ignore -= 1;
         }
         else
