@@ -173,6 +173,7 @@ MonoBehaviour:
   attSpd: 3
   towerRange: 10
   money: 0
+  accumulated: 0
   shootTimer: 0
   wave: 0
   waveDuration: 2
@@ -186,7 +187,7 @@ MonoBehaviour:
   attRangePerUpgrade: 1
   healthPerUpgrade: 10
   hpRegenPerUpgrade: 1
-  debugSettings: 1
+  debugSettings: 0
   additionalStartingMoney: 12345
   additionalStartingHealth: 12345
 --- !u!1 &74792932
@@ -3318,7 +3319,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1139710263}
   m_HandleRect: {fileID: 1139710262}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4751,7 +4752,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 468209757}
   m_HandleRect: {fileID: 468209756}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
